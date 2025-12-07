@@ -1,0 +1,53 @@
+/*V2 */
+
+/* Page background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #0f172a; /* dark slate background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* App container */
+.app-shell {
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;       /* phone width */
+    min-height: 100vh;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+
+/*V2 */
+
+/*V1 of styling default styling */
+
+/*College Event Finder main page*/ /*
+.app-header {
+    background-color: #3f32ed;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+font-family: "Comic Sans MS", cursive;}
+
+body {
+    margin:0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 2rem;
+} */
+/*V1 of styling default styling */
+
+
+
+
