@@ -1,0 +1,43 @@
+Graphical User Interface Planning Document
+
+1. Header
+    A. College Event Finder (persistent)
+
+2. Main page
+       - Search bar (static)
+       - Vertical event list (scrollable)
+       - Event cards (scrolling) (in date order)
+
+          - Entire list scrolls independently of header and search bar
+          - Designed for mobile responsiveness
+
+       Event cards (scrolling)
+          - Each card displays:
+              • Event title
+              • Event date & time
+              • Short description
+              • Category or tag
+          - Cards appear in chronological or filtered order
+          - Clicking a card opens the Event Detail view
+
+3. Event Detail View
+       - Shows full event details
+       - Contains bookmark (clickable) and share buttons (not yet active)
+       - Back button to return to previous page
+
+4. Add Event Page
+       - Where new events are created
+       - Has a form with all event details to add
+
+5. Bookmarks Page
+       - Shows all bookmarked events
+       - Basically copy and paste of main page
+       - Bookmark feature added visually first, then functionally later
+
+6. Navigation Menu (persistent) bottom of page
+       - Allows menus to be chosen from all pages
+              • Home page
+              • Search page/bar
+              • Bookmarks page
+              • Add event button (+)
+
