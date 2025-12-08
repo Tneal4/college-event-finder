@@ -1,4 +1,4 @@
-Graphical User Interface Planning Document
+Graphical User Interface Planning Document (gui_planning.txt)
 
 1. Header
     A. College Event Finder (persistent)
@@ -41,3 +41,15 @@ Graphical User Interface Planning Document
               • Bookmarks page
               • Add event button (+)
 
+----------------------------------------------------------------------------
+Week 2 UI Updates:
+- Added main page container (app main page) with scroll behavior.
+- Added search bar section with improved input styling.
+- Added test event cards.
+- safe-area padding for mobile devices.
+- Improved layout and design
+- Added hover and touch  interactions for event cards.
+- Tested layout across multiple mobile devices.
+- Change colors for future developments.
+
+----------------------------------------------------------------------------
