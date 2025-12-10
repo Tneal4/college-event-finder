@@ -1,0 +1,178 @@
+
+[
+  {
+    "title": "Midnight Basketball Open Run",
+    "date": "2025-12-15",
+    "time": "9:30 PM",
+    "description": "Open gym for students to play casual five-on-five games, meet new teammates, and get some late-night cardio in a relaxed environment.",
+    "category": "Athletics"
+  },
+  {
+    "title": "Finals Week Study Jam",
+    "date": "2025-12-10",
+    "time": "7:00 PM",
+    "description": "Quiet group study space with snacks, coffee, and printing help. Tutors will be available for quick questions in math, writing, and computer science.",
+    "category": "Academic"
+  },
+  {
+    "title": "Campus Winter Social",
+    "date": "2025-12-18",
+    "time": "6:30 PM",
+    "description": "A casual mixer with music, photo booth, and hot chocolate bar where students can unwind, socialize, and connect before heading into the break.",
+    "category": "Campus Life"
+  },
+  {
+    "title": "Intramural Soccer Scrimmage",
+    "date": "2025-12-12",
+    "time": "4:15 PM",
+    "description": "Pick-up soccer match for all skill levels on the main field. Equipment is provided; just bring running shoes or cleats and a water bottle.",
+    "category": "Athletics"
+  },
+  {
+    "title": "Library Late-Night Review Session",
+    "date": "2025-12-21",
+    "time": "8:00 PM",
+    "description": "Extended library hours with quiet and group zones. Peer mentors will roam to help answer last-minute questions about exams and projects.",
+    "category": "Academic"
+  },
+  {
+    "title": "Student Art Pop-Up Gallery",
+    "date": "2025-12-16",
+    "time": "5:00 PM",
+    "description": "One-night showcase of student drawings, photography, and digital art in the student union. Light refreshments served and artists available to discuss their work.",
+    "category": "Arts"
+  },
+  {
+    "title": "Career Services Drop-In Coaching",
+    "date": "2025-12-09",
+    "time": "2:30 PM",
+    "description": "Short one-on-one appointments focused on resume reviews, LinkedIn profiles, and internship search strategies with career coaches.",
+    "category": "Career"
+  },
+  {
+    "title": "Esports Lab Open Play Night",
+    "date": "2025-12-19",
+    "time": "7:45 PM",
+    "description": "Students can reserve gaming stations, join friendly tournaments, or spectate matches in titles like Valorant, Rocket League, and League of Legends.",
+    "category": "Recreation"
+  },
+  {
+    "title": "Campus Choir Holiday Performance",
+    "date": "2025-12-13",
+    "time": "3:00 PM",
+    "description": "The campus choir presents a short program of seasonal music in the auditorium, open to all students and guests.",
+    "category": "Arts"
+  },
+  {
+    "title": "First-Gen Student Meet and Greet",
+    "date": "2025-12-11",
+    "time": "5:30 PM",
+    "description": "A welcoming space for first-generation students to connect, share experiences, and learn about campus resources and mentorship opportunities.",
+    "category": "Campus Life"
+  },
+  {
+    "title": "Data Structures Review Workshop",
+    "date": "2025-12-20",
+    "time": "1:15 PM",
+    "description": "Peer-led review for data structures covering lists, trees, graphs, and common exam patterns. Bring notes and questions.",
+    "category": "Academic"
+  },
+  {
+    "title": "Yoga and Mindfulness Session",
+    "date": "2025-12-14",
+    "time": "10:30 AM",
+    "description": "Gentle yoga and guided breathing exercises designed to help students manage stress and improve focus before exams.",
+    "category": "Health"
+  },
+  {
+    "title": "Evening Campus Walking Tour",
+    "date": "2025-12-23",
+    "time": "6:00 PM",
+    "description": "Student guides lead a relaxed evening walk around campus landmarks, sharing fun history and hidden study spots.",
+    "category": "Campus Life"
+  },
+  {
+    "title": "Study Abroad Information Table",
+    "date": "2025-12-17",
+    "time": "11:30 AM",
+    "description": "Drop by the info table to learn about semester abroad options, scholarships, and application timelines from advisors.",
+    "category": "Info Session"
+  },
+  {
+    "title": "Pick-Up Volleyball Night",
+    "date": "2025-12-22",
+    "time": "8:15 PM",
+    "description": "Casual volleyball games in the rec center. No team required; players will be grouped on arrival.",
+    "category": "Athletics"
+  },
+  {
+    "title": "Community Service Packing Party",
+    "date": "2025-12-10",
+    "time": "4:45 PM",
+    "description": "Help assemble care kits for a local shelter. All materials supplied; students only need to sign in and participate.",
+    "category": "Community"
+  },
+  {
+    "title": "STEM Tutoring Power Hour",
+    "date": "2025-12-15",
+    "time": "12:00 PM",
+    "description": "Intensive drop-in tutoring focused on calculus, chemistry, and introductory programming before finals.",
+    "category": "Academic"
+  },
+  {
+    "title": "Open Mic Night at the Union",
+    "date": "2025-12-21",
+    "time": "7:00 PM",
+    "description": "Students can perform music, poetry, comedy, or spoken word in a supportive, low-pressure environment.",
+    "category": "Campus Life"
+  },
+  {
+    "title": "Women in Tech Networking Meetup",
+    "date": "2025-12-18",
+    "time": "5:15 PM",
+    "description": "Casual networking event for women and allies in computing, with lightning talks and mentor introductions.",
+    "category": "Career"
+  },
+  {
+    "title": "Residence Hall Movie Night",
+    "date": "2025-12-09",
+    "time": "9:00 PM",
+    "description": "Free movie screening with popcorn in the residence hall lounge. Students vote on the film at the start.",
+    "category": "Campus Life"
+  },
+  {
+    "title": "Finals De-Stress Dogs",
+    "date": "2025-12-13",
+    "time": "1:00 PM",
+    "description": "Therapy dogs visit campus so students can take a break, pet friendly dogs, and recharge between study sessions.",
+    "category": "Health"
+  },
+  {
+    "title": "Student Startup Pitch Practice",
+    "date": "2025-12-16",
+    "time": "2:00 PM",
+    "description": "Founders can practice short pitches and receive structured feedback from entrepreneurship center staff and peers.",
+    "category": "Career"
+  },
+  {
+    "title": "Tabletop Games Evening",
+    "date": "2025-12-19",
+    "time": "6:30 PM",
+    "description": "Board games and card games available in the lounge, with staff helping match players to games and groups.",
+    "category": "Recreation"
+  },
+  {
+    "title": "Late-Night Coffee and Cram",
+    "date": "2025-12-20",
+    "time": "10:00 PM",
+    "description": "Study space in the student union with free coffee, snacks, and quiet background music to support focused work.",
+    "category": "Academic"
+  },
+  {
+    "title": "Campus Photo Walk",
+    "date": "2025-12-22",
+    "time": "3:30 PM",
+    "description": "Group walk to capture winter campus photos. Open to all skill levels and camera types, including phones.",
+    "category": "Arts"
+  }
+]

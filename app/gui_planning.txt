@@ -53,3 +53,10 @@ Week 2 UI Updates:
 - Change colors for future developments.
 
 ----------------------------------------------------------------------------
+Week 3 JSON Event List Updates:
+- Created real simulation events.json file with 25 test events.
+- Added JavaScript to load dynamically to application
+- Connected the search bar to JSON database to be able to search events by
+any piece of data of the events
+-Created a 'no events found' when nonsense is typed
+----------------------------------------------------------------------------
