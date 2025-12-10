@@ -24,7 +24,13 @@
         </section>
 
         <section class="event-list" id="eventList">
-<!--            <div class="event-card">-->
+
+            <section class="bookmarks-page" id="bookmarksPage" hidden>
+                <h2>Bookmarked Events</h2>
+                <div id="bookmarkedList"></div>
+            </section>
+
+            <!--            <div class="event-card">-->
 <!--                <h2 class="event-title">Sample Event Alpha</h2>-->
 <!--                <p class="event-date">Date: January 1, 2025</p>-->
 <!--                <p class="event-description">This is a short description of the event.</p>-->
@@ -79,7 +85,26 @@
 <!--            </div>-->
         </section>
 
+        <section class="event-detail" id="eventDetail" hidden>
+            <button class="detail-back-button" id="detailBackButton">← Back to Events</button>
+            <h2 class="detail-title"></h2>
+            <p class="detail-date"></p>
+            <p class="detail-description"></p>
+            <p class="detail-category"></p>
+        </section>
+
+
+
+
     </main>
+<!--Setup for the boottom nav bar-->
+    <nav class="app-nav">
+        <button class="nav-button" data-target="home">Home</button>
+        <button class="nav-button" data-target="search">Search</button>
+        <button class="nav-button" data-target="bookmarks">Bookmarks</button>
+        <button class="nav-button" data-target="add">Add Event</button>
+    </nav>
+
 </div>
 <script src="js/app.js"></script>
 

@@ -152,6 +152,43 @@ h1, h2, h3 {
     color: var(--primary-blue);
 }
 
+/* Event Detail View */
+.event-detail {
+    background: #ffffff;
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    margin-top: 1rem;
+}
+/*Back button within menus */
+.detail-back-button {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.detail-back-button:hover {
+    opacity: 0.85;
+}
+
+.detail-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.detail-date,
+.detail-description,
+.detail-category {
+    margin: 0.4rem 0;
+    font-size: 1rem;
+}
+
 
 /* screen  */
 @media (max-width: 360px) {
@@ -179,3 +216,46 @@ html {
     scroll-behavior: smooth;
 }
 
+
+.app-nav {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    padding: 0.6rem 0;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+}
+/*Bottom Bar customizations*/
+.nav-button {
+    background: none;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    cursor: pointer;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+}
+
+.nav-button:hover {
+    background: rgba(45, 108, 223, 0.1);
+}
+
+.nav-button:active {
+    background: rgba(45, 108, 223, 0.2);
+}
+/* Bookmarks */
+.bookmarks-page h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+#bookmarkedList {
+    padding: 1rem;
+}
