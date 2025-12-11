@@ -113,6 +113,21 @@ body {
     box-shadow: 0 2px 5px var(--card-shadow);
     transition: transform 0.15s ease;
 }
+.bookmark-btn {
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    font-weight: 700;
+    cursor: pointer;
+    float: right;
+    margin-top: -0.3rem;
+    margin-right: 0.3rem;
+    font-size: 1rem;
+}
+
+.bookmark-btn.saved {
+    color: #d97706; /* gold/orange when saved */
+}
 
 .event-card:hover {
     transform: scale(1.01);
@@ -258,4 +273,51 @@ html {
 
 #bookmarkedList {
     padding: 1rem;
+}
+.nav-button.active {
+    background: rgba(45, 108, 223, 0.12);
+    color: var(--text-dark);
+}
+.bookmark-btn {
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    font-weight: 700;
+    cursor: pointer;
+    float: right;
+    margin-top: -0.3rem;
+    margin-right: 0.3rem;
+    font-size: 1rem;
+}
+
+.bookmark-btn.saved {
+    color: #d97706; /* gold/orange when saved */
+}
+.clear-bookmarks-btn {
+    background: #e11d48; /* red */
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.clear-bookmarks-btn:hover {
+    opacity: 0.85;
+}
+#resultsInfo {
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+.search-active {
+    border-color: var(--primary-blue) !important;
+    box-shadow: 0 0 6px rgba(45,108,223,0.35);
+    transition: 0.15s ease;
 }

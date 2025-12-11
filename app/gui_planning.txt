@@ -60,3 +60,18 @@ Week 3 JSON Event List Updates:
 any piece of data of the events
 -Created a 'no events found' when nonsense is typed
 ----------------------------------------------------------------------------
+Week 4 UI Updates:
+- Added Event Detail View section.
+- Cards now open detail view on click.
+- Added a Back button for returning to feed.
+- Added a bottom navigation bar.
+- Navigation buttons wired with click behavior.
+----------------------------------------------------------------------------
+Week 5 Functionality Updates:
+- Added bookmark star on each  card
+- Gave bookmark colors a meaning where blue is nothing but gold means bookmarked
+- Gave the bookmark button an actual function
+- Added a clear bookmarks button if search process needs to be started over
+- Bookmarks can noow be saved through a refresh
+- Added a number of events shown in search bar
+- other visual improvements

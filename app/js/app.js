@@ -1,11 +1,37 @@
 // app scripting
 
 let allEvents = [];
+let bookmarkedKeys = new Set();
 
-// Render events onto the page
+function saveBookmarks() {
+    localStorage.setItem("cefBookmarks", JSON.stringify(Array.from(bookmarkedKeys)));
+}
+
+function loadBookmarks() {
+    const raw = localStorage.getItem("cefBookmarks");
+    if (!raw) return;
+    try {
+        const arr = JSON.parse(raw);
+        bookmarkedKeys = new Set(arr);
+    } catch (e) {
+        console.error("Failed to load bookmarks from storage", e);
+    }
+}
+
+// -------------------- Bookmarks helpers --------------------
+
+function getEventKey(event) {
+    return `${event.title}|${event.date}|${event.time}`;
+}
+
+// Render events onto the main list
 function renderEvents(events) {
     const eventList = document.getElementById("eventList");
     eventList.innerHTML = ""; // Clear old content
+    const resultsInfo = document.getElementById("resultsInfo");
+    if (resultsInfo) {
+        resultsInfo.textContent = `Showing ${events.length} event${events.length === 1 ? "" : "s"}`;
+    }
 
     if (events.length === 0) {
         const message = document.createElement("p");
@@ -22,13 +48,27 @@ function renderEvents(events) {
         card.classList.add("event-card");
 
         card.innerHTML = `
+            <button class="bookmark-btn">★</button>
             <h2 class="event-title">${event.title}</h2>
             <p class="event-date">${event.date} • ${event.time}</p>
             <p class="event-description">${event.description}</p>
             <p class="event-category">${event.category}</p>
         `;
 
-        // Clicking card open an actual event page
+        const bookmarkBtn = card.querySelector(".bookmark-btn");
+        const key = getEventKey(event);
+
+        if (bookmarkedKeys.has(key)) {
+            bookmarkBtn.classList.add("saved");
+        }
+
+        // clicking the star toggles bookmark only
+        bookmarkBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // do not open detail when clicking star
+            toggleBookmark(event, bookmarkBtn);
+        });
+
+        // clicking the card opens the detail view
         card.addEventListener("click", () => {
             openEventDetail(event);
         });
@@ -37,62 +77,75 @@ function renderEvents(events) {
     });
 }
 
+function toggleBookmark(event, buttonEl) {
+    const key = getEventKey(event);
 
-    function openEventDetail(event) {
-        const detailSection = document.getElementById("eventDetail");
-        const eventListSection = document.getElementById("eventList");
-
-        document.querySelector(".detail-title").textContent = event.title;
-        document.querySelector(".detail-date").textContent = `${event.date} • ${event.time}`;
-        document.querySelector(".detail-description").textContent = event.description;
-        document.querySelector(".detail-category").textContent = event.category;
-
-        // Show detail while hiding the list behind it
-        eventListSection.hidden = true;
-        detailSection.hidden = false;
+    if (bookmarkedKeys.has(key)) {
+        bookmarkedKeys.delete(key);
+        if (buttonEl) buttonEl.classList.remove("saved");
+    } else {
+        bookmarkedKeys.add(key);
+        if (buttonEl) buttonEl.classList.add("saved");
     }
+    saveBookmarks();
+    // If bookmarks page is visible, refresh it
+    const bookmarksPage = document.getElementById("bookmarksPage");
+    if (bookmarksPage && !bookmarksPage.hidden) {
+        renderBookmarks();
+    }
+}
 
+function renderBookmarks() {
+    const list = document.getElementById("bookmarkedList");
+    list.innerHTML = "";
 
+    const events = allEvents.filter(e => bookmarkedKeys.has(getEventKey(e)));
 
-
-// Search Bar Conifgs
-function setupSearch() {
-    const searchInput = document.getElementById("searchInput");
-    if (!searchInput) {
-        console.error("Search input not found");
+    if (events.length === 0) {
+        const p = document.createElement("p");
+        p.textContent = "You have no bookmarked events yet.";
+        p.style.textAlign = "center";
+        p.style.color = "#777";
+        p.style.padding = "1rem";
+        list.appendChild(p);
         return;
     }
 
-    searchInput.addEventListener("input", function () {
-        const searchText = this.value.toLowerCase();
+    events.forEach(event => {
+        const card = document.createElement("div");
+        card.classList.add("event-card");
 
-        const filteredEvents = allEvents.filter(event =>    ///very specifically so that every word can be searchable
-            event.title.toLowerCase().includes(searchText) ||
-            event.description.toLowerCase().includes(searchText) ||
-            event.category.toLowerCase().includes(searchText)
-        );
+        card.innerHTML = `
+            <h2 class="event-title">${event.title}</h2>
+            <p class="event-date">${event.date} • ${event.time}</p>
+            <p class="event-description">${event.description}</p>
+            <p class="event-category">${event.category}</p>
+        `;
 
-        renderEvents(filteredEvents);
+        card.addEventListener("click", () => {
+            openEventDetail(event);
+        });
+
+        list.appendChild(card);
     });
 }
 
-// Loading events from JSON file
-fetch("data/events.json")
-    .then(response => response.json())
-    .then(events => {
+// -------------------- Detail view --------------------
 
-        // Sort events by date automatically
-        events.sort((a, b) => new Date(a.date) - new Date(b.date));
+function openEventDetail(event) {
+    const detailSection = document.getElementById("eventDetail");
+    const eventListSection = document.getElementById("eventList");
+    const bookmarksSection = document.getElementById("bookmarksPage");
 
-        allEvents = events;
-        console.log("Events loaded:", allEvents);
+    document.querySelector(".detail-title").textContent = event.title;
+    document.querySelector(".detail-date").textContent = `${event.date} • ${event.time}`;
+    document.querySelector(".detail-description").textContent = event.description;
+    document.querySelector(".detail-category").textContent = event.category;
 
-        renderEvents(allEvents);
-        setupSearch();
-    })
-    .catch(error => {
-        console.error("Error loading events:", error);
-    });
+    eventListSection.hidden = true;
+    if (bookmarksSection) bookmarksSection.hidden = true;
+    detailSection.hidden = false;
+}
 
 // Back button
 document.getElementById("detailBackButton").addEventListener("click", () => {
@@ -106,50 +159,124 @@ document.getElementById("detailBackButton").addEventListener("click", () => {
     eventListSection.scrollTop = 0;
 });
 
-// Show bookmarks
-function showBookmarksPage() {
-    document.getElementById("eventList").hidden = true;
-    document.getElementById("eventDetail").hidden = true;
-    document.getElementById("bookmarksPage").hidden = false;
+// -------------------- Search --------------------
+
+function setupSearch() {
+    const searchInput = document.getElementById("searchInput");
+    if (!searchInput) return;
+
+    searchInput.addEventListener("focus", () => {
+        searchInput.classList.add("search-active");
+    });
+
+    searchInput.addEventListener("blur", () => {
+        searchInput.classList.remove("search-active");
+    });
+
+    searchInput.addEventListener("input", function () {
+        const searchText = this.value.toLowerCase();
+
+        const filteredEvents = allEvents.filter(event =>
+            event.title.toLowerCase().includes(searchText) ||
+            event.description.toLowerCase().includes(searchText) ||
+            event.category.toLowerCase().includes(searchText)
+        );
+
+        renderEvents(filteredEvents);
+    });
 }
+
+
+// -------------------- Page visibility helpers --------------------
+
 function hideAllPages() {
     document.getElementById("eventList").hidden = true;
     document.getElementById("eventDetail").hidden = true;
     document.getElementById("bookmarksPage").hidden = true;
 }
+function scrollToTop() {
+    const main = document.querySelector(".app-main");
+    if (main) main.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showBookmarksPage() {
+    hideAllPages();
+    document.getElementById("bookmarksPage").hidden = false;
+    renderBookmarks();
+}
+// Clear all bookmarks
+document.getElementById("clearBookmarksBtn").addEventListener("click", () => {
+    bookmarkedKeys.clear();
+    saveBookmarks();
+    renderBookmarks();
+    renderEvents(allEvents);
+});
 
 
-// Navigation button
+// -------------------- Navigation --------------------
+
 document.querySelectorAll(".nav-button").forEach(button => {
     button.addEventListener("click", () => {
         const target = button.getAttribute("data-target");
         console.log("Navigation clicked:", target);
 
         const eventListSection = document.getElementById("eventList");
-        const detailSection = document.getElementById("eventDetail");
         const bookmarksSection = document.getElementById("bookmarksPage");
         const searchInput = document.getElementById("searchInput");
 
-        if (target === "home") {
-            hideAllPages();
-            document.getElementById("eventList").hidden = true;
+        // active nav styling
+        document.querySelectorAll(".nav-button").forEach(b => b.classList.remove("active"));
+        button.classList.add("active");
 
+        hideAllPages();
+
+        if (target === "home") {
+            eventListSection.hidden = false;
+            scrollToTop();
         } else if (target === "search") {
-            hideAllPages();
-            document.getElementById("searchInput").focus();
-            document.getElementById("eventList").hidden = false;
+            eventListSection.hidden = false;
+            scrollToTop();
+            if (searchInput) searchInput.focus();
 
         } else if (target === "bookmarks") {
-            showBookmarksPage(); // UI-only for now
-        } else if (target === "add") {
-            // Placeholder for future "Add Event" page
-            console.log("Add Event feature coming later.");
-        }
-        hideAllPages();
-        document.getElementById("bookmarksPage").hidden = false;
+            bookmarksSection.hidden = false;
+            renderBookmarks();
+            scrollToTop();
 
+        } else if (target === "add") {
+            console.log("Add Event feature coming later.");
+            eventListSection.hidden = false;
+            scrollToTop();
+        }
     });
 });
 
+// -------------------- Load events from JSON --------------------
+
+fetch("data/events.json")
+    .then(response => response.json())
+    .then(events => {
+
+        // Sort events by date automatically
+        events.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        allEvents = events;
+        loadBookmarks();
+        console.log("Events loaded:", allEvents);
+
+        renderEvents(allEvents);
+        setupSearch();
+    })
+    .catch(error => {
+        console.error("Error loading events:", error);
+    });
 
 console.log("College Event Finder application has loaded sucessfully.");
+// Ensure default view on load
+hideAllPages();
+function scrollToTop() {
+    const main = document.querySelector(".app-main");
+    if (main) main.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+document.getElementById("eventList").hidden = false;

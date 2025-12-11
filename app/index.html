@@ -21,69 +21,22 @@
         <section class="search-section">
             <label for="searchInput" class="visually-hidden">Search Events</label>
             <input type="text" id="searchInput" placeholder="Search events...">
+            <p id="resultsInfo">Showing 0 events</p>
         </section>
+
 
         <section class="event-list" id="eventList">
-
-            <section class="bookmarks-page" id="bookmarksPage" hidden>
-                <h2>Bookmarked Events</h2>
-                <div id="bookmarkedList"></div>
-            </section>
-
-            <!--            <div class="event-card">-->
-<!--                <h2 class="event-title">Sample Event Alpha</h2>-->
-<!--                <p class="event-date">Date: January 1, 2025</p>-->
-<!--                <p class="event-description">This is a short description of the event.</p>-->
-<!--            </div>-->
-
-<!--            <div class="event-card">-->
-<!--                <h2 class="event-title">Sample Event Bravo</h2>-->
-<!--                <p class="event-date">Date: January 1, 2025</p>-->
-<!--                <p class="event-description">This is a short description of the event.</p>-->
-<!--            </div>-->
-
-<!--            <div class="event-card">-->
-<!--                <h2 class="event-title">Sample Event Charlie</h2>-->
-<!--                <p class="event-date">Date: January 1, 2025</p>-->
-<!--                <p class="event-description">This is a short description of the event.</p>-->
-<!--            </div>-->
-
-<!--            <div class="event-card">-->
-<!--                <h2 class="event-title">Sample Event Delta</h2>-->
-<!--                <p class="event-date">Date: January 1, 2025</p>-->
-<!--                <p class="event-description">This is a short description of the event.</p>-->
-<!--            </div>-->
-
-<!--            <div class="event-card">-->
-<!--                <h2 class="event-title">Sample Event Echo</h2>-->
-<!--                <p class="event-date">Date: January 1, 2025</p>-->
-<!--                <p class="event-description">This is a short description of the event.</p>-->
-<!--            </div>-->
-
-<!--            <div class="event-card">-->
-<!--                <h2 class="event-title">Sample Event Foxtrot</h2>-->
-<!--                <p class="event-date">Date: January 1, 2025</p>-->
-<!--                <p class="event-description">This is a short description of the event.</p>-->
-<!--            </div>-->
-
-<!--            <div class="event-card">-->
-<!--                <h2 class="event-title">Sample Event Golf</h2>-->
-<!--                <p class="event-date">Date: January 1, 2025</p>-->
-<!--                <p class="event-description">This is a short description of the event.</p>-->
-<!--            </div>-->
-
-<!--            <div class="event-card">-->
-<!--                <h2 class="event-title">Sample Event Hotel</h2>-->
-<!--                <p class="event-date">Date: January 1, 2025</p>-->
-<!--                <p class="event-description">This is a short description of the event.</p>-->
-<!--            </div>-->
-
-<!--            <div class="event-card">-->
-<!--                <h2 class="event-title">Sample Event India</h2>-->
-<!--                <p class="event-date">Date: January 1, 2025</p>-->
-<!--                <p class="event-description">This is a short description of the event.</p>-->
-<!--            </div>-->
         </section>
+
+        <section class="bookmarks-page" id="bookmarksPage" hidden>
+            <h2>Bookmarked Events</h2>
+
+            <button id="clearBookmarksBtn" class="clear-bookmarks-btn">Clear All Bookmarks</button>
+
+            <div id="bookmarkedList"></div>
+        </section>
+
+
 
         <section class="event-detail" id="eventDetail" hidden>
             <button class="detail-back-button" id="detailBackButton">← Back to Events</button>
@@ -99,7 +52,7 @@
     </main>
 <!--Setup for the boottom nav bar-->
     <nav class="app-nav">
-        <button class="nav-button" data-target="home">Home</button>
+        <button class="nav-button active" data-target="home">Home</button>
         <button class="nav-button" data-target="search">Search</button>
         <button class="nav-button" data-target="bookmarks">Bookmarks</button>
         <button class="nav-button" data-target="add">Add Event</button>
