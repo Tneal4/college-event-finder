@@ -193,7 +193,9 @@ function hideAllPages() {
     document.getElementById("eventList").hidden = true;
     document.getElementById("eventDetail").hidden = true;
     document.getElementById("bookmarksPage").hidden = true;
+    document.getElementById("addEventPage").hidden = true;
 }
+
 function scrollToTop() {
     const main = document.querySelector(".app-main");
     if (main) main.scrollTo({ top: 0, behavior: "smooth" });
@@ -244,17 +246,25 @@ document.querySelectorAll(".nav-button").forEach(button => {
             scrollToTop();
 
         } else if (target === "add") {
-            console.log("Add Event feature coming later.");
-            eventListSection.hidden = false;
-            scrollToTop();
+            const addPage = document.getElementById("addEventPage");
+            if (addPage) addPage.hidden = false;
+
+            // Step 12: Auto-focus first input
+            document.getElementById("eventTitleInput").focus();
         }
+
     });
 });
 
 // -------------------- Load events from JSON --------------------
 
 fetch("data/events.json")
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Failed to load events");
+        }
+        return response.json();
+    })
     .then(events => {
 
         // Sort events by date automatically
@@ -269,7 +279,19 @@ fetch("data/events.json")
     })
     .catch(error => {
         console.error("Error loading events:", error);
+
+        const eventList = document.getElementById("eventList");
+        eventList.innerHTML = `
+        <p style="
+            color:#b91c1c;
+            padding:1rem;
+            text-align:center;
+            font-size:0.95rem;">
+            Unable to load event data. Please refresh the page or try again later.
+        </p>
+    `;
     });
+
 
 console.log("College Event Finder application has loaded sucessfully.");
 // Ensure default view on load
@@ -280,3 +302,83 @@ function scrollToTop() {
 }
 
 document.getElementById("eventList").hidden = false;
+
+// Add Event Form Submission
+const addEventForm = document.getElementById("addEventForm");
+
+if (addEventForm) {
+    addEventForm.addEventListener("submit", (e) => {
+        const submitBtn = addEventForm.querySelector(".add-event-submit");
+        submitBtn.disabled = true;
+        setTimeout(() => submitBtn.disabled = false, 800);
+
+        e.preventDefault(); // stop page reload
+
+        const title = document.getElementById("eventTitleInput").value.trim();
+        const date = document.getElementById("eventDateInput").value;
+        const time = document.getElementById("eventTimeInput").value;
+        const category = document.getElementById("eventCategoryInput").value;
+        const description = document.getElementById("eventDescriptionInput").value.trim();
+
+        // Reset previous error states
+        document.querySelectorAll("#addEventForm input, #addEventForm select, #addEventForm textarea")
+            .forEach(el => el.classList.remove("input-error"));
+
+        let hasError = false;
+
+        if (!title) {
+            document.getElementById("eventTitleInput").classList.add("input-error");
+            hasError = true;
+        }
+        if (!date) {
+            document.getElementById("eventDateInput").classList.add("input-error");
+            hasError = true;
+        }
+        if (!time) {
+            document.getElementById("eventTimeInput").classList.add("input-error");
+            hasError = true;
+        }
+        if (!category) {
+            document.getElementById("eventCategoryInput").classList.add("input-error");
+            hasError = true;
+        }
+        if (!description) {
+            document.getElementById("eventDescriptionInput").classList.add("input-error");
+            hasError = true;
+        }
+
+        if (hasError) {
+            alert("Please fill in the highlighted fields.");
+            return;
+        }
+
+
+        const newEvent = { title, date, time, category, description };
+
+        allEvents.push(newEvent);
+        allEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        renderEvents(allEvents);
+        document.querySelector(".event-card").classList.add("event-added-highlight");
+
+// Step 5 additions:
+        document.getElementById("searchInput").value = ""; // clear search bar
+        document.querySelector(".app-main").scrollTop = 0; // scroll to top
+
+
+        hideAllPages();
+        document.getElementById("eventList").hidden = false;
+
+        addEventForm.reset();
+
+        alert("Event added successfully.");
+        console.log("New event created:", newEvent);
+    });
+
+}
+document.querySelectorAll("#addEventForm input, #addEventForm select, #addEventForm textarea")
+    .forEach(el => {
+        el.addEventListener("input", () => {
+            el.classList.remove("input-error");
+        });
+    });

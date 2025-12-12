@@ -72,6 +72,12 @@ Week 5 Functionality Updates:
 - Gave bookmark colors a meaning where blue is nothing but gold means bookmarked
 - Gave the bookmark button an actual function
 - Added a clear bookmarks button if search process needs to be started over
-- Bookmarks can noow be saved through a refresh
+- Bookmarks can now be saved through a refresh
 - Added a number of events shown in search bar
 - other visual improvements
+----------------------------------------------------------------------------
+Week 6 Functionality Updates:
+- Fully fleshed out the add event page
+- Connected the add event button to the entire app. Gave it ability to live update as an entry is made
+- Added actual forms and form submission to application
+- Added validation to ensure actions were successful

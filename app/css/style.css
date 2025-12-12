@@ -1,6 +1,6 @@
 /* College Event Finder - main styles */
 
-/* Design tokens */
+/*  tokens styling */
 :root {
     --primary-blue: #2d6cdf;
     --background-dark: #0f172a;
@@ -9,12 +9,12 @@
     --text-light: #555;
 }
 
-/* Global reset */
+
 * {
     box-sizing: border-box;
 }
 
-/* Page background */
+/* background */
 body {
     margin: 0;
     padding: 0;
@@ -40,7 +40,7 @@ body {
     padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* Header */
+/* Headerss */
     .app-header {
         background-color: var(--primary-blue);
         padding: 1rem;
@@ -98,7 +98,7 @@ body {
     border: 0;
 }
 
-/* Event list */
+/* events */
 .event-list {
     margin-top: 1rem;
     padding: 1rem 1rem 2rem;
@@ -162,12 +162,17 @@ h1, h2, h3 {
 /*week 3 addition changes so that the category shows in blue*/
 .event-category {
     margin-top: 0.3rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    background: rgba(45,108,223,0.15);
     color: var(--primary-blue);
 }
 
-/* Event Detail View */
+
+/* Event detail view */
 .event-detail {
     background: #ffffff;
     padding: 1.2rem;
@@ -189,6 +194,13 @@ h1, h2, h3 {
 
 .detail-back-button:hover {
     opacity: 0.85;
+}
+.detail-category-badge {
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    background: rgba(45,108,223,0.20);
+    color: var(--primary-blue);
+    display: inline-block;
 }
 
 .detail-title {
@@ -244,7 +256,7 @@ html {
     border-top: 1px solid #e0e0e0;
     box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
 }
-/*Bottom Bar customizations*/
+/*bottom bar customizations*/
 .nav-button {
     background: none;
     border: none;
@@ -291,10 +303,11 @@ html {
 }
 
 .bookmark-btn.saved {
-    color: #d97706; /* gold/orange when saved */
+    color: #d97706;
+    /* gold star color when saved */
 }
 .clear-bookmarks-btn {
-    background: #e11d48; /* red */
+    background: #e11d48;
     color: white;
     border: none;
     padding: 0.6rem 1rem;
@@ -317,7 +330,74 @@ html {
     color: var(--text-light);
 }
 .search-active {
-    border-color: var(--primary-blue) !important;
+    border-color: var(--primary-blue) ;
     box-shadow: 0 0 6px rgba(45,108,223,0.35);
     transition: 0.15s ease;
+}
+/* adding events page */
+.add-event-page {
+    background: #ffffff;
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    margin-top: 1rem;
+}
+
+.add-event-page h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#addEventForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+#addEventForm label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+#addEventForm input,
+#addEventForm select,
+#addEventForm textarea {
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+    font-family: inherit;
+}
+
+.add-event-submit {
+    margin-top: 0.75rem;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 0.7rem 1rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.add-event-submit:hover {
+    opacity: 0.9;
+}
+.input-error {
+    border: 2px solid #e11d48 ;
+    background: #ffe4e6;
+}
+.event-added-highlight {
+    animation: addedFlash 1.2s ease-out;
+}
+
+@keyframes addedFlash {
+    0%   { background:#d1fae5; }
+    100% { background:white; }
 }

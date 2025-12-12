@@ -35,15 +35,55 @@
 
             <div id="bookmarkedList"></div>
         </section>
+        <section class="add-event-page" id="addEventPage" hidden>
+            <h2>Add New Event</h2>
+
+            <form id="addEventForm">
+                <label>
+                    Title
+                    <input type="text" id="eventTitleInput" required>
+                </label>
+
+                <label>
+                    Date
+                    <input type="date" id="eventDateInput" required>
+                </label>
+
+                <label>
+                    Time
+                    <input type="time" id="eventTimeInput" required>
+                </label>
+
+                <label>
+                    Category
+                    <select id="eventCategoryInput" required>
+                        <option value="">Select a category</option>
+                        <option value="Athletics">Athletics</option>
+                        <option value="Campus Life">Campus Life</option>
+                        <option value="Academic">Academic</option>
+                        <option value="Career">Career</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </label>
+
+                <label>
+                    Description
+                    <textarea id="eventDescriptionInput" rows="3" maxlength="300" required></textarea>
+                </label>
+
+                <button type="submit" class="add-event-submit">Add Event</button>
+            </form>
+        </section>
 
 
-
+<!--Events Detail Page-->
         <section class="event-detail" id="eventDetail" hidden>
             <button class="detail-back-button" id="detailBackButton">← Back to Events</button>
             <h2 class="detail-title"></h2>
             <p class="detail-date"></p>
             <p class="detail-description"></p>
-            <p class="detail-category"></p>
+            <p class="detail-category detail-category-badge"></p>
+
         </section>
 
 
